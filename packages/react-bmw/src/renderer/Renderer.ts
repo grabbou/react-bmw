@@ -4,6 +4,7 @@ import BaseElement from './BaseElement';
 import Label from './Label';
 import Title from './Title';
 import State from './State';
+import Root from './Root';
 
 declare global {
   namespace JSX {
@@ -59,15 +60,15 @@ const Renderer = Reconciler({
   finalizeInitialChildren: function(...args) {
     return false;
   },
-  appendChildToContainer: (_, tree: State) => {
-    console.log(tree.toJSON());
+  appendChildToContainer: (parent: BaseElement<any>, child: BaseElement<any>) => {
+    parent.appendChild(child);
   },
   appendChild: () => {},
   prepareForCommit: function(...args) {
     console.log('prepareForCommit', ...args);
   },
-  resetAfterCommit: function(...args) {
-    console.log('resetAfterCommit', ...args);
+  resetAfterCommit: function(root: Root) {
+    console.log(root.toJSON());
   },
   supportsMutation: true,
 });
@@ -80,10 +81,8 @@ export default (
   callback?: () => void
 ) => {
   if (!root) {
-    root = Renderer.createContainer(entryPointId, false);
+    root = Renderer.createContainer(new Root(entryPointId), false);
   }
 
   Renderer.updateContainer(reactElement, root, null, callback);
-
-  return Renderer.getPublicRootInstance(root);
 };
