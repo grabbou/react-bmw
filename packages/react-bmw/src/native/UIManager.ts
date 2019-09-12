@@ -16,9 +16,14 @@ class UIManager {
     this.oap.openState(stateId);
   }
 
-  showInitialScreen(stateId: number) {}
+  showInitialScreen(stateId: number) {
+    console.log(`Showing initial screen: ${stateId}`);
+  }
 
-  attachListenerToButton(id: number, cb: () => void) {}
+  // @todo take a look at order of calls
+  attachListenerToButton(id: number, cb: () => void) {
+    console.log(`Attaching listener to a button with id: ${id}`);
+  }
 }
 
 export default new UIManager(new OfflineAppRuntime());

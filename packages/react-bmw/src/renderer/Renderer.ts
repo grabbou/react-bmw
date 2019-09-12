@@ -1,13 +1,13 @@
-import Reconciler from 'react-reconciler';
-import UIGenerator from './UIGenerator';
+import Reconciler from "react-reconciler";
+import UIGenerator from "./UIGenerator";
 
-import BaseElement from './BaseElement';
-import Label from './Label';
-import Title from './Title';
-import Button from './Button';
-import State from './State';
-import Root from './Root';
-import LayoutGroup from './LayoutGroup';
+import BaseElement from "./BaseElement";
+import Label from "./Label";
+import Title from "./Title";
+import Button from "./Button";
+import State from "./State";
+import Root from "./Root";
+import LayoutGroup from "./LayoutGroup";
 
 declare global {
   namespace JSX {
@@ -30,6 +30,9 @@ const Renderer = Reconciler({
   getRootHostContext: function() {
     return rootHostContext;
   },
+  getPublicInstance: function(element) {
+    return element;
+  },
   getChildHostContext: function() {
     return childHostContext;
   },
@@ -41,20 +44,20 @@ const Renderer = Reconciler({
   },
   createInstance: function(type, props: any & { type: string }) {
     switch (type) {
-      case 'container': {
+      case "container": {
         return new State(props);
       }
-      case 'layoutGroup': {
+      case "layoutGroup": {
         return new LayoutGroup(props);
       }
-      case 'component': {
-        if (props.type === 'label') {
+      case "component": {
+        if (props.type === "label") {
           return new Label(props);
         }
-        if (props.type === 'button') {
+        if (props.type === "button") {
           return new Button(props);
         }
-        if (props.type === 'title') {
+        if (props.type === "title") {
           return new Title(props);
         }
         throw new Error(`Unsupported component ${type}`);
@@ -84,7 +87,7 @@ const Renderer = Reconciler({
     UIGenerator(root);
     console.log(JSON.stringify(root.toJSON()));
   },
-  supportsMutation: true,
+  supportsMutation: true
 });
 
 let root: Reconciler.FiberRoot;

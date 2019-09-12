@@ -12,14 +12,18 @@ type Props = {
  * Button component
  */
 class Button extends React.Component<Props> {
+  ref = React.createRef<ReactInstance>();
+
   componentDidMount() {
+    if (!this.ref.current) {
+      return;
+    }
+
     if (typeof this.props.onPress === "function") {
       const id = getIdFromFiber(this.ref.current);
       UIManager.attachListenerToButton(id, this.props.onPress);
     }
   }
-
-  ref = React.createRef<ReactInstance>();
 
   render() {
     return (

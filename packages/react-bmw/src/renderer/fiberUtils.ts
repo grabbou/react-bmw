@@ -1,3 +1,5 @@
+import BaseElement from "./BaseElement";
+
 export type ReactInstance = {
   _reactInternalFiber: {
     child: {
@@ -9,5 +11,7 @@ export type ReactInstance = {
 };
 
 export const getIdFromFiber = (fiber: ReactInstance) => {
-  return fiber._reactInternalFiber.child.stateNode.id;
+  return fiber instanceof BaseElement
+    ? fiber.id
+    : fiber._reactInternalFiber.child.stateNode.id;
 };
