@@ -1,13 +1,22 @@
 import React, { forwardRef } from "react";
-import { Text, Navigator, Button, Scene, Body } from "react-bmw";
+import {
+  Text,
+  Navigator,
+  NavigatorRoute,
+  Button,
+  Scene,
+  Body
+} from "react-bmw";
 
 export default () => {
-  const MainScene = forwardRef<Scene>((_, ref) => (
+  const MainScene = forwardRef<Scene, NavigatorRoute>(({ navigate }, ref) => (
     <Scene ref={ref}>
       <Body>
         <Text>Hello Sir,</Text>
-        <Text>How are you enjoying your M5 today?</Text>
-        <Button>Turn on donouts mode</Button>
+        <Text>Are you ready to turn on donout mode?</Text>
+        <Button onPress={() => navigate(SettingsScene)}>
+          Yes, go to settings!
+        </Button>
       </Body>
     </Scene>
   ));

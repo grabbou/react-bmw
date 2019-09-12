@@ -17,6 +17,8 @@ class UIManager {
   }
 
   showInitialScreen(stateId: number) {}
+
+  attachListenerToButton(id: number, cb: () => void) {}
 }
 
 export default new UIManager(new OfflineAppRuntime());
