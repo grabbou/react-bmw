@@ -1,5 +1,5 @@
-import * as ComponentRegistry from './ComponentRegistry';
-import uuid from 'uuid';
+import * as ComponentRegistry from "./ComponentRegistry";
+import uuid from "uuid";
 
 export default abstract class BaseElement<T> {
   id: number = ComponentRegistry.register(this);

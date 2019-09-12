@@ -1,4 +1,4 @@
-import BaseElement from './BaseElement';
+import BaseElement from "./BaseElement";
 
 let idx = 0;
 const map = new Map<number, BaseElement<any>>();
