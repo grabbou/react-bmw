@@ -9,8 +9,8 @@
 /**
  * Public components
  */
-export {default as Container} from './components/Container';
-export {default as Text} from './components/Text';
+// export {default as Container} from './components/Container';
+// export {default as Text} from './components/Text';
 
 /**
  * OAP-App Entrypoint

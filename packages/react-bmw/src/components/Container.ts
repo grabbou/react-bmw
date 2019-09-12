@@ -2,8 +2,8 @@ import React from 'react';
 
 type Props = {
   id: number;
-  children: JSX.Element[] | JSX.Element
-}
+  children: JSX.Element[] | JSX.Element;
+};
 
 class Scene extends React.Component<Props> {
   render() {

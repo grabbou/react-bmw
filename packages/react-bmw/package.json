@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "tsc src/index.ts --lib 'ES2015' --esModuleInterop --module 'commonjs' --moduleResolution 'node'"
+    "prepare": "tsc src/index.ts --lib 'ES2015' --esModuleInterop --module 'commonjs' --moduleResolution 'node' --outDir javascript"
   },
   "author": "",
   "license": "MIT",

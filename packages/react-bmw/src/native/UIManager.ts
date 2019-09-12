@@ -1,7 +1,6 @@
 import HMIState from './HMIState';
 
 // @ts-ignore: BMW proprietary SDK, not present in OSS
-import OnlineApp from 'oap-sdk/src/core/OnlineApp.js';
 
 declare class RHMIState {
   updateResources: () => Promise<void>;
@@ -66,14 +65,23 @@ class UIManager {
   }
 
   static async runApplication(
-    AppPresenter: new (ui: UIManager) => HMIState,
-    entryPointId: string
+    oapApp: any,
+    AppPresenter: new (
+      logFactory: any,
+      ui: UIManager,
+      dataModels: any,
+      build: any
+    ) => HMIState,
+    entryPointId: string,
+    logFactory: any,
+    dataModels: any,
+    build: any
   ) {
-    const oap = new OnlineApp();
 
-    const ui = new UIManager(oap);
 
-    const appInstance = new AppPresenter(ui);
+    const ui = new UIManager(oapApp);
+
+    const appInstance = new AppPresenter(logFactory, oapApp, dataModels, build);
 
     await appInstance.init();
 
