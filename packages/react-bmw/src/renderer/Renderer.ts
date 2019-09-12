@@ -1,5 +1,5 @@
-import Reconciler from "react-reconciler";
-import UIGenerator from "./UIGenerator";
+import Reconciler from 'react-reconciler';
+import UIGenerator from './UIGenerator';
 
 import BaseElement from './BaseElement';
 import Label from './Label';
