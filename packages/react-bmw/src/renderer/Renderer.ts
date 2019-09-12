@@ -1,5 +1,5 @@
-import Reconciler from 'react-reconciler';
-import UIGenerator from './UIGenerator';
+import Reconciler from "react-reconciler";
+import UIGenerator from "./UIGenerator";
 
 import BaseElement from './BaseElement';
 import Label from './Label';
@@ -82,7 +82,7 @@ const Renderer = Reconciler({
   prepareForCommit: NOOP,
   resetAfterCommit: function(root: Root) {
     UIGenerator(root);
-    console.log(root.toXML());
+    console.log(JSON.stringify(root.toJSON()));
   },
   supportsMutation: true,
 });
