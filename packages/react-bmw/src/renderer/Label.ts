@@ -1,4 +1,3 @@
-import uuid from 'uuid';
 import builder from 'xmlbuilder';
 
 import BaseElement from "./BaseElement";
