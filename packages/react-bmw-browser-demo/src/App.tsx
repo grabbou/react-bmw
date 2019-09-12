@@ -5,9 +5,9 @@ export default () => {
   const MainScene = () => (
     <Scene>
       <Body>
-        <Text>Hello BMW!</Text>
-        <Text>How are you?</Text>
-        <Button>Click me</Button>
+        <Text>Hello Sir,</Text>
+        <Text>How are you enjoying your M5 today?</Text>
+        <Button>Turn on donouts mode</Button>
       </Body>
     </Scene>
   );
@@ -15,8 +15,8 @@ export default () => {
   const SettingsScene = () => (
     <Scene>
       <Body>
-        <Text>Hello BMW!</Text>
-        <Text>How are you?</Text>
+        <Text>Settings screen</Text>
+        <Text>Activate insane mode</Text>
       </Body>
     </Scene>
   );

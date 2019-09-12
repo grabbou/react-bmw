@@ -1,15 +1,15 @@
-import builder from 'xmlbuilder';
+import builder from "xmlbuilder";
 
-import BaseElement from './BaseElement';
-import IXMLSerialziable from './IXMLSerializable';
-import IJSONSerialziable from './IJSONSerializable';
+import BaseElement from "./BaseElement";
+import IXMLSerialziable from "./IXMLSerializable";
+import IJSONSerialziable from "./IJSONSerializable";
 
 type NativeProps = {
   OptionComponents: string;
 };
 
 enum Widget {
-  LT_Wide = 'LT_State_Wide',
+  LT_Wide = "LT_State_Wide"
 }
 
 class State extends BaseElement<NativeProps>
@@ -20,10 +20,10 @@ class State extends BaseElement<NativeProps>
 
   toXML(parent: builder.XMLElement) {
     const element = parent
-      .ele('container')
-      .att('id', this.id)
-      .att('widget', Widget.LT_Wide)
-      .att('type', 'state');
+      .ele("container")
+      .att("id", this.id)
+      .att("widget", Widget.LT_Wide)
+      .att("type", "state");
 
     for (const child of this.children) {
       child.toXML(element);
@@ -34,18 +34,18 @@ class State extends BaseElement<NativeProps>
 
   toJSON() {
     return {
-      type: 'state',
+      type: "state",
       name: this.name,
       properties: {
         OptionComponents: {
           value: this.props.OptionComponents,
-          type: 'Text',
-        },
+          type: "Text"
+        }
       },
       components: this.children.reduce(
-        (acc, child) => ({ ...acc, [child.id]: child.toJSON() }),
+        (acc, child) => ({ ...acc, ...child.toJSON() }),
         {}
-      ),
+      )
     };
   }
 }
