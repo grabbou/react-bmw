@@ -1,16 +1,69 @@
-// import Reconciler from 'react-reconciler';
+import React from 'react';
+import Reconciler from 'react-reconciler';
 
-// const HostConfig = {
+const rootHostContext = {};
+const childHostContext = {};
 
-// };
+// @ts-ignore
+// @todo FIX THE TYPES!!
+const Renderer = Reconciler({
+  now: Date.now,
+  getRootHostContext: () => {
+    return rootHostContext;
+  },
+  prepareForCommit: () => {},
+  resetAfterCommit: () => {},
+  getChildHostContext: () => {
+    return childHostContext;
+  },
+  shouldSetTextContent: (type, props) => {
+    return false;
+  },
+  createInstance: (type, newProps, rootContainerInstance, _currentHostContext, workInProgress) => {
+    return null;
+  },
+  createTextInstance: (text, rootContainerInstance, hostContext, internalInstanceHandle) => {
+    return null;
+  },
+  appendInitialChild: (parent, child) => {
+    // parent.addChildView(child);
+  },
+  appendChild(parent, child) {
+    // parent.addChildView(child);
+  },
+  finalizeInitialChildren(
+    parentInstance,
+    type,
+    props,
+    rootContainerInstance,
+    hostContext,
+  ) {
+    return false;
+  },
+  supportsMutation: true,
+  appendChildToContainer: (parent, child) => {
+    // parent.setContentView(child);
+  },
+  prepareUpdate(yueElement, oldProps, newProps) {
+    return true;
+  },
+  commitUpdate(yueElement, updatePayload, type, oldProps, newProps) {},
+  commitTextUpdate(textInstance, oldText, newText) {},
+  removeChild(parentInstance, child) {}
+});
 
-// const MyRenderer = Reconciler(HostConfig);
+let root;
 
-// const RendererPublicAPI = {
-//   render(element, container, callback) {
-//     // Call MyRenderer.updateContainer() to schedule changes on the roots.
-//     // See ReactDOM, React Native, or React ART for practical examples.
-//   }
-// };
+export const render = (
+  reactElement: JSX.Element,
+  entryPointId: string,
+  callback?: () => void
+) => {
+  if (!root) {
+    root = Renderer.createContainer(entryPointId, false);
+  }
 
-// module.exports = RendererPublicAPI;
+  Renderer.updateContainer(reactElement, root, null, callback);
+
+  return Renderer.getPublicRootInstance();
+};
