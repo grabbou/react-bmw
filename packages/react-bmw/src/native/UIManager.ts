@@ -24,6 +24,7 @@ type OAP = {
   rhmiApplication: RHMI;
   startReason: string;
   start: () => Promise<void>;
+  initialized: () => Promise<void>;
   on: (name: string, handler: (uuid: string) => Promise<void>) => void;
 };
 
@@ -76,7 +77,7 @@ class UIManager {
 
     await appInstance.init();
 
-    ui.start(entryPointId, 10);
+    ui.start(entryPointId, 1);
   }
 }
 
