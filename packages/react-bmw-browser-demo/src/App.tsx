@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import ReactBMW, { Text, Container } from 'react-bmw';
+import { Text, Container } from 'react-bmw';
 
 class MainApplication extends React.Component {
   render() {

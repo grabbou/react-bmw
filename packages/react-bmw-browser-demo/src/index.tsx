@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactBMW from 'react-bmw';
+import * as ReactBMW from 'react-bmw';
 
 import MainApplication from './App';
 

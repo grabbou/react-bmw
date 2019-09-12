@@ -1,14 +1,14 @@
 import React from 'react';
 
 type Props = {
-  id: number;
+  __id: number;
   children: JSX.Element[] | JSX.Element
 }
 
-class Scene extends React.Component<Props> {
+class Container extends React.Component<Props> {
   render() {
     return this.props.children;
   }
 }
 
-export default Scene;
+export default Container;

@@ -54,7 +54,7 @@ const Renderer = Reconciler({
 
 let root: Reconciler.FiberRoot;
 
-export const render = (
+export default (
   reactElement: JSX.Element,
   entryPointId: string,
   callback?: () => void
