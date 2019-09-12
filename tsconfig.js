@@ -7,7 +7,7 @@
     "isolatedModules": true,
     "jsx": "react",
     "lib": ["es6", "dom"],
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
