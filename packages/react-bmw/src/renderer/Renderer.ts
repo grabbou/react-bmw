@@ -44,7 +44,7 @@ const Renderer = Reconciler({
     }
   },
   appendInitialChild: function(parent: XMLNode, child: XMLNode) {
-    parent.appendChild(parent);
+    parent.appendChild(child);
   },
   finalizeInitialChildren: function(...args) {
     console.log('finalizeInitialChildren', ...args)
