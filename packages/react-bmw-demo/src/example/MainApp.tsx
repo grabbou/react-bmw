@@ -15,4 +15,4 @@ class MainApplication extends State {
   }
 }
 
-render(MainApplication, '89065040-ce62-11e9-b5b0-959cc45744a0')
+render(MainApplication, '89065040-ce62-11e9-b5b0-959cc45744a0');
