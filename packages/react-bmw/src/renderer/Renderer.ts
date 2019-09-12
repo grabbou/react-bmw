@@ -61,7 +61,9 @@ const Renderer = Reconciler({
     console.log('finalizeInitialChildren', ...args);
     return false;
   },
-  appendChildToContainer: () => {},
+  appendChildToContainer: (_, tree: State) => {
+    console.log(tree.toJSON());
+  },
   appendChild: () => {},
   prepareForCommit: function(...args) {
     console.log('prepareForCommit', ...args);

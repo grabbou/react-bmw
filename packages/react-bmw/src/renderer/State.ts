@@ -11,7 +11,7 @@ enum Widget {
   LT_Wide = 'LT_State_Wide',
 }
 
-class Label extends BaseElement<NativeProps> {
+class State extends BaseElement<NativeProps> {
   constructor(props: NativeProps) {
     super(props);
   }
@@ -48,4 +48,4 @@ class Label extends BaseElement<NativeProps> {
   }
 }
 
-export default Label;
+export default State;

@@ -16,7 +16,5 @@ export default () => {
 
   const [scene] = useState(MainScene);
 
-  return (
-    <Navigator scenes={[MainScene, SettingsScene]} activeScene={scene} />
-  );
+  return <Navigator scenes={[MainScene, SettingsScene]} activeScene={scene} />;
 };
