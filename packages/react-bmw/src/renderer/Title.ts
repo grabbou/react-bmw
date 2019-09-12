@@ -6,7 +6,10 @@ type NativeProps = {
   children: string;
 };
 
-class Label extends BaseElement<NativeProps> {
+/**
+ * Native component that corresponds to a title component
+ */
+class Title extends BaseElement<NativeProps> {
   constructor(props: NativeProps) {
     super(props);
   }
@@ -35,4 +38,4 @@ class Label extends BaseElement<NativeProps> {
   }
 }
 
-export default Label;
+export default Title;

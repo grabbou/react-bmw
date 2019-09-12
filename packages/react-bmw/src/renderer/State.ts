@@ -7,6 +7,10 @@ type NativeProps = {
   OptionComponents: string;
 };
 
+enum Widget {
+  LT_Wide = 'LT_State_Wide',
+}
+
 class Label extends BaseElement<NativeProps> {
   constructor(props: NativeProps) {
     super(props);
@@ -16,6 +20,7 @@ class Label extends BaseElement<NativeProps> {
     const element = builder
       .create('container')
       .att('id', this.id)
+      .att('widget', Widget.LT_Wide)
       .att('type', 'state');
 
     element
