@@ -1,18 +1,22 @@
-/**
- * A HelloWorld app
- */
+import React, { useState } from 'react';
+import { Text, Navigator, Container } from 'react-bmw';
 
-import React from 'react';
-import { Text, Container } from 'react-bmw';
+export default () => {
+  const MainScene = () => (
+    <Container>
+      <Text>Hello BMW!</Text>
+    </Container>
+  );
 
-class MainApplication extends React.Component {
-  render() {
-    return (
-      <Container __id={1}>
-        <Text __id={2}>Welcome to BMW!</Text>
-      </Container>
-    )
-  }
-}
+  const SettingsScene = () => (
+    <Container>
+      <Text>Settings</Text>
+    </Container>
+  );
 
-export default MainApplication;
+  const [scene] = useState(MainScene);
+
+  return (
+    <Navigator scenes={[MainScene, SettingsScene]} activeScene={scene} />
+  );
+};
