@@ -1,0 +1,14 @@
+{
+  "name": "react-bmw",
+  "version": "1.0.0-alpha.0",
+  "description": "A BMW React package for running and rendering apps on the iDrive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "packages": {
+    "react-rhmi-renderer": "1.0.0-alpha.0"
+  }
+}

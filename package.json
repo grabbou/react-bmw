@@ -1,8 +1,4 @@
 {
-	"devDependencies": {
-		"lerna": "^2.11.0"
-	},
-	"dependencies": {
-		"dtslint": "^0.9.6"
-	}
+	"private": true,
+	"workspaces": ["packages/*"]
 }
