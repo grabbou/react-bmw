@@ -5,7 +5,7 @@ import OnlineApp from 'oap-sdk/src/core/OnlineApp.js';
 
 declare class RHMIState {
   updateResources: () => Promise<void>;
-};
+}
 
 type RHMI = {
   onRhmiReady: () => Promise<void>;

@@ -11,7 +11,8 @@ type NativeProps = {
 /**
  * Native component that corresponds to a title component
  */
-class Title extends BaseElement<NativeProps> implements IXMLSerialziable, IJSONSerialziable {
+class Title extends BaseElement<NativeProps>
+  implements IXMLSerialziable, IJSONSerialziable {
   constructor(props: NativeProps) {
     super(props);
   }

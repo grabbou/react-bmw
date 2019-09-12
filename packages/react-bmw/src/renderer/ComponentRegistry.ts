@@ -7,4 +7,4 @@ export const register = (component: BaseElement<any>) => {
   map.set(idx, component);
   idx = idx + 1;
   return idx;
-}
+};
