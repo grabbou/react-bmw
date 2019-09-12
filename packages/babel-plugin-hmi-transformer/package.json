@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-boilerplate",
+  "name": "babel-plugin-hmi-transformer",
   "version": "0.0.1",
   "description": "Generate code at build-time",
   "main": "dist/index.js",
@@ -50,10 +50,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kentcdodds/babel-plugin-boilerplate.git"
+    "url": "https://github.com/callstack-internal/react-xml.git"
   },
   "bugs": {
     "url": "https://github.com/kentcdodds/babel-plugin-boilerplate/issues"
   },
-  "homepage": "https://github.com/kentcdodds/babel-plugin-boilerplate#readme"
+  "homepage": "https://github.com/callstack-internal/react-xml#readme"
 }
