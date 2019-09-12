@@ -5,7 +5,6 @@ import IXMLSerialziable from './IXMLSerializable';
 import IJSONSerialziable from './IJSONSerializable';
 
 type NativeProps = {
-  children: BaseElement<any>;
   OptionComponents: string;
 };
 
@@ -43,7 +42,10 @@ class State extends BaseElement<NativeProps>
           type: 'Text',
         },
       },
-      components: this.children.map(el => el.toJSON()),
+      components: this.children.reduce(
+        (acc, child) => ({ ...acc, [child.id]: child.toJSON() }),
+        {}
+      ),
     };
   }
 }

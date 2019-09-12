@@ -4,11 +4,13 @@
  * Sheer development pleasure
  */
 
-export { default as render } from './renderer/Renderer';
+export { default as render } from "./renderer/Renderer";
 
 /**
  * Public components
  */
-export { default as Container } from './components/Container';
-export { default as Text } from './components/Text';
-export { default as Navigator } from './components/Navigator';
+export { default as Scene } from "./components/Scene";
+export { default as Button } from "./components/Button";
+export { default as Body } from "./components/Body";
+export { default as Text } from "./components/Text";
+export { default as Navigator } from "./components/Navigator";

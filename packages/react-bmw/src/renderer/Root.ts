@@ -1,8 +1,8 @@
-import builder from 'xmlbuilder';
+import builder from "xmlbuilder";
 
-import BaseElement from './BaseElement';
+import BaseElement from "./BaseElement";
 
-const SCHEMA_VERSION = '1.3.0';
+const SCHEMA_VERSION = "1.3.0";
 
 class Root extends BaseElement<{}> {
   toJSON() {
@@ -14,12 +14,12 @@ class Root extends BaseElement<{}> {
 
     return {
       schemaVersion: SCHEMA_VERSION,
-      containers,
+      containers
     };
   }
 
   toXML() {
-    const element = builder.create('application');
+    const element = builder.create("application");
 
     for (const child of this.children) {
       child.toXML(element);
