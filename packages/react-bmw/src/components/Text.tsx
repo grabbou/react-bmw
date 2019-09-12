@@ -8,8 +8,8 @@ type Props = {
 class Text extends React.Component<Props> {
   render() {
     return (
-      <component type="label" focusable={this.props.focusable}>
-
+      <component type="label" focusable={this.props.focusable || false}>
+        {this.props.children}
       </component>
     )
   }

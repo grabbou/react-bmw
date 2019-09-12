@@ -14,8 +14,6 @@ export default abstract class BaseElement<T> {
 
   // Add a child to the end of existing list of children
   appendChild(child: any) {
-    child.parent = this;
-
     this.children.push(child);
     this.invalidate();
   }
@@ -28,8 +26,6 @@ export default abstract class BaseElement<T> {
 
   // Insert a child before another child in the list of children
   insertBefore(child: any, childBefore: any) {
-    child.parent = this;
-
     this.children.splice(this.children.indexOf(childBefore), 0, child);
     this.invalidate();
   }

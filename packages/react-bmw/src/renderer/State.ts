@@ -31,19 +31,16 @@ class State extends BaseElement<NativeProps> {
   }
 
   toJSON() {
-    const { children, OptionComponents } = this.props;
     return {
       type: 'state',
       name: this.name,
       properties: {
         OptionComponents: {
-          value: OptionComponents,
+          value: this.props.OptionComponents,
           type: 'Text',
         },
       },
-      components: Array.isArray(children)
-        ? children.map(el => el.toJSON())
-        : [children],
+      components: this.children.map(el => el.toJSON()),
     };
   }
 }

@@ -27,11 +27,10 @@ const Renderer = Reconciler({
     return childHostContext;
   },
   shouldSetTextContent: function(...args) {
-    console.log('shouldSetTextContent', ...args);
     return false;
   },
   createTextInstance: function(text) {
-    return Text;
+    return text;
   },
   createInstance: function(type, props: any & { type: string }) {
     switch (type) {
@@ -58,7 +57,6 @@ const Renderer = Reconciler({
     parent.appendChild(child);
   },
   finalizeInitialChildren: function(...args) {
-    console.log('finalizeInitialChildren', ...args);
     return false;
   },
   appendChildToContainer: (_, tree: State) => {

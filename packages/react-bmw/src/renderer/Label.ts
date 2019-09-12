@@ -42,7 +42,7 @@ class Label extends BaseElement<NativeProps> {
       name: this.name,
       properties: {
         Focusable: {
-          value: Number(this.props.focused),
+          value: this.props.focused ? 1 : 0,
           type: 'UInt',
         },
       },
