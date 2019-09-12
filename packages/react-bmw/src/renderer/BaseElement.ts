@@ -8,8 +8,7 @@ export default abstract class BaseElement<T> {
   children = [];
   props: T;
 
-  constructor(name: string, props: T) {
-    this.name = name;
+  constructor(props: T) {
     this.props = props;
   }
 

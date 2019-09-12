@@ -48,7 +48,7 @@ const Renderer = Reconciler({
         throw new Error(`Unsupported component ${type}`);
       }
       default:
-        throw new Error(`Unsupported component ${type}`);
+        throw new Error(`Unsupported component: ${type}`);
     }
   },
   appendInitialChild: function(
