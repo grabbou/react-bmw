@@ -28,7 +28,7 @@ class LayoutGroup extends BaseElement<NativeProps>
 
   toJSON() {
     return this.children.reduce(
-      (acc, child) => Object.assign(acc, child.toJSON()),
+      (acc, child) => ({ ...acc, [child.id]: child.toJSON() }),
       {}
     );
   }
