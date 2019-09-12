@@ -1,21 +1,22 @@
-import { HmiPresenter } from 'react-rhmi-renderer';
+import { HMIState, UIManager } from 'react-rhmi-renderer';
 
-type RhmiApp = {
-  openState: (number: int) => Promise<void>;
-};
+abstract class State implements HMIState {
+  ui: UIManager;  
+  
+  constructor(ui: UIManager) {
+    this.ui = ui;
+  }
 
-type OAP = {
-  rhmiApplication: RhmiApp;
-};
-
-class State implements HmiPresenter {
-  oap: OAP;
-
-  async init() {}
+  async init() {
+    // prepare for changes
+    this.render();
+  }
 
   async open() {
-    return this.oap.rhmiApplication.openState(10);
+    return this.ui.navigateTo(10);
   }
+
+  abstract render();
 }
 
 export default State;
