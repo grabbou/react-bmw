@@ -24,6 +24,8 @@ export type OAP = {
 
 interface IOAPInterface {
   openState: (id: number) => void;
+  showInitialScreen: (stateId: number) => void;
+  attachListenerToButton: (id: number, cb: () => void) => void;
 }
 
 export default IOAPInterface;
