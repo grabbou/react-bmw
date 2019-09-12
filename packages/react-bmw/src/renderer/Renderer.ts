@@ -35,16 +35,16 @@ const Renderer = Reconciler({
   createInstance: function(type, props: any & { type: string }) {
     switch (type) {
       case 'container': {
-        return new BaseElement('container', props);
+        return new BaseElement(props);
       }
       case 'component': {
         if (props.type === 'label') {
           return new Label(props);
         }
-        return new BaseElement('component', props);
+        throw new Error(`Unssuported component: ${props.type}`);
       }
       default:
-        throw new Error(`Unsupported component ${type}`);
+        throw new Error(`Unsupported component: ${type}`);
     }
   },
   appendInitialChild: function(parent: BaseElement<any>, child: BaseElement<any>) {

@@ -9,10 +9,6 @@ type NativeProps = {
 };
 
 class Label extends BaseElement<NativeProps> {
-  constructor(props: NativeProps) {
-    super('component', props);
-  }
-
   toXML() {
     const element = builder.create('component')
       .att('id', this.id)
