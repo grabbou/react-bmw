@@ -37,9 +37,6 @@
     "babel-plugin-tester": "^5.0.0",
     "kcd-scripts": "^0.39.0"
   },
-  "eslintConfig": {
-    "extends": "./node_modules/kcd-scripts/eslint.js"
-  },
   "eslintIgnore": [
     "node_modules",
     "coverage",

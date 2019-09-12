@@ -8,7 +8,7 @@
   },
   "author": "",
   "license": "MIT",
-  "packages": {
+  "dependencies": {
     "react-rhmi-renderer": "1.0.0-alpha.0"
   }
 }

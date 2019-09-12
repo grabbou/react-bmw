@@ -1,5 +1,3 @@
-class Text {
-
-}
+class Text {}
 
 export default Text;

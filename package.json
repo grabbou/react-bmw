@@ -1,4 +1,28 @@
 {
 	"private": true,
-	"workspaces": ["packages/*"]
+	"workspaces": [
+		"packages/*"
+	],
+	"devDependencies": {
+		"@callstack/eslint-config": "^7.0.0",
+		"eslint": "^6.3.0"
+  },
+  "scripts": {
+    "lint": "yarn eslint --ext '.js,.ts' ./packages/react-*"
+  },
+  "dependencies": {
+		"@typescript-eslint/eslint-plugin": "^2.2.0",
+		"@typescript-eslint/parser": "^2.2.0",
+		"typescript": "^3.6.3"
+	},
+  "eslintConfig": {
+    "extends": "@callstack",
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    }
+  }
 }

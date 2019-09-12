@@ -1,11 +1,11 @@
 import HmiPresenter from './HmiPresenter';
 
 // @ts-ignore: BMW proprietary SDK, not present in OSS
-import OnlineApp from 'oap-sdk/src/core/OnlineApp.js'; 
+import OnlineApp from 'oap-sdk/src/core/OnlineApp.js';
 
 type RHMI = {
-  onRhmiReady: () => Promise<void>,
-  init: () => Promise<void>,
+  onRhmiReady: () => Promise<void>;
+  init: () => Promise<void>;
 };
 
 /**
@@ -13,26 +13,27 @@ type RHMI = {
  * the lifecycle of the current app
  */
 type OAP = {
-  rhmiApplication: RHMI,
+  rhmiApplication: RHMI;
 };
 
+/**
+ * UIManager
+ */
 class UIManager {
   oap: OAP;
-  
+
   constructor(oap: OAP) {
     this.oap = oap;
   }
 
-  static runApplication<T extends HmiPresenter>(AppPresenter: T) {
+  static runApplication(AppPresenter: new (ui: UIManager) => HmiPresenter) {
     const oap = new OnlineApp();
 
     const ui = new UIManager(oap);
 
-    const appInstance = new AppPresenter();
+    const appInstance = new AppPresenter(ui);
 
-    oap.rhmiApplication
-      .onRhmiReady(() => appInstance.init())
-      .init()
+    oap.rhmiApplication.onRhmiReady(() => appInstance.init()).init();
   }
 }
 
@@ -40,18 +41,16 @@ export default UIManager;
 
 // ReactRHMIRenderer.runApplication(App);
 
-
 // ---
-
 
 // inversify
 
-// container.bind ourselves to inject the components 
+// container.bind ourselves to inject the components
 // THIS IS IN typescript/di
 
 // 1. start()
 
-// onRhmiReady -> hmiPresneters - init() - 
+// onRhmiReady -> hmiPresneters - init() -
 // commnent: potential improvemt of lazy init
 
 // Sheer Developing Pleasure
@@ -59,8 +58,8 @@ export default UIManager;
 /**
  * import ReactRHMIRenderer from 'react-bmw-renderer';
  * import React from 'react';
- * 
+ *
  * import MainScreen from './MainScreen';
- * 
+ *
  * ReactRHMIRenderer.render(MainScreen);
  */
