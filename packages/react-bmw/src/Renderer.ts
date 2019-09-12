@@ -52,7 +52,7 @@ const Renderer = Reconciler({
   removeChild(parentInstance, child) {}
 });
 
-let root;
+let root: Reconciler.FiberRoot;
 
 export const render = (
   reactElement: JSX.Element,
