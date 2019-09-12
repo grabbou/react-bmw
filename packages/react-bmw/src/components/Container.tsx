@@ -7,7 +7,7 @@ type Props = {
 class Container extends React.Component<Props> {
   render() {
     return (
-      <container id={1}>
+      <container type="state">
         {this.props.children}
       </container>
     );

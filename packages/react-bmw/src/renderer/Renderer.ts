@@ -1,7 +1,16 @@
 import React from 'react';
 import Reconciler from 'react-reconciler';
 
-import ContainerNode from './ContainerNode';
+import XMLNode from './XMLNode';
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      container: any;
+      component: any;
+    }
+  }
+}
 
 const rootHostContext = {};
 const childHostContext = {};
@@ -25,7 +34,10 @@ const Renderer = Reconciler({
   createInstance: function(type, props) {
     switch (type) {
       case 'container': {
-        return new ContainerNode(props);
+        return new XMLNode('container', props);
+      }
+      case 'component': {
+        return new XMLNode('component', props);
       }
       default:
         throw new Error(`Unsupported component ${type}`);

@@ -1,16 +1,10 @@
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      container: any;
-    }
-  }
-}
-
-export default class Container {
+export default class XMLNode {
   children = [];
   props = {};
-
-  constructor(props) {
+  name;
+  
+  constructor(name, props) {
+    this.name = name;
     this.props = props;
   }
 

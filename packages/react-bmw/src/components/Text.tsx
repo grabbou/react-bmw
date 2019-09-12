@@ -6,7 +6,9 @@ type Props = {
 
 class Text extends React.Component<Props> {
   render() {
-    return this.props.children;
+    return (
+      <component id="3" type="label" widget="LT_Label_2Row_1TextDyn" />
+    )
   }
 }
 
