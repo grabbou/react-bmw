@@ -5,12 +5,14 @@ import Label from './Label';
 import Title from './Title';
 import State from './State';
 import Root from './Root';
+import LayoutGroup from './LayoutGroup';
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       container: any;
       component: any;
+      layoutGroup: any;
     }
   }
 }
@@ -37,6 +39,9 @@ const Renderer = Reconciler({
     switch (type) {
       case 'container': {
         return new State(props);
+      }
+      case 'layoutGroup': {
+        return new LayoutGroup(props);
       }
       case 'component': {
         if (props.type === 'label') {
@@ -68,7 +73,8 @@ const Renderer = Reconciler({
     console.log('prepareForCommit', ...args);
   },
   resetAfterCommit: function(root: Root) {
-    console.log(root.toXML());
+    console.log(JSON.stringify(root.toJSON()));
+    // console.log(root.toXML());
   },
   supportsMutation: true,
 });

@@ -4,7 +4,7 @@ type Props = {
   children: JSX.Element[] | JSX.Element
 }
 
-class Container extends React.Component<Props> {
+class Scene extends React.Component<Props> {
   render() {
     return (
       <container type="state">
@@ -14,4 +14,4 @@ class Container extends React.Component<Props> {
   }
 }
 
-export default Container;
+export default Scene;

@@ -1,17 +1,23 @@
 import React, { useState } from 'react';
-import { Text, Navigator, Container } from 'react-bmw';
+import { Text, Navigator, Scene, Body } from 'react-bmw';
 
 export default () => {
   const MainScene = () => (
-    <Container>
-      <Text focusable>Hello BMW!</Text>
-    </Container>
+    <Scene>
+      <Body>
+        <Text>Hello BMW!</Text>
+        <Text>How are you?</Text>
+      </Body>
+    </Scene>
   );
 
   const SettingsScene = () => (
-    <Container>
-      <Text>Settings</Text>
-    </Container>
+    <Scene>
+       <Body>
+        <Text>Hello BMW!</Text>
+        <Text>How are you?</Text>
+      </Body>
+    </Scene>
   );
 
   const [scene] = useState(MainScene);
