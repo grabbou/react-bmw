@@ -9,13 +9,13 @@ type NativeProps = {
 
 /**
  * Different kinds of widgets that can be rendered by BMW infotainment system.
- * 
+ *
  * Note to future self: Consider rewriting this into a more expressive
  * layout engine where this is implied automatically and typed as well
  */
 enum Widget {
-  Multiline_2R1T = 'LT_Label_2Row_1TextDyn'
-};
+  Multiline_2R1T = 'LT_Label_2Row_1TextDyn',
+}
 
 /**
  * Native component that corresponds to a label component

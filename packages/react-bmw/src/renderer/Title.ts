@@ -8,7 +8,7 @@ type NativeProps = {
 
 class Label extends BaseElement<NativeProps> {
   constructor(props: NativeProps) {
-    super('component', props);
+    super(props);
   }
 
   toXML() {
