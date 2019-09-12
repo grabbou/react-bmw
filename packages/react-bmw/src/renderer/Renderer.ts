@@ -5,6 +5,7 @@ import path from "path";
 import BaseElement from "./BaseElement";
 import Label from "./Label";
 import Title from "./Title";
+import Button from "./Button";
 import State from "./State";
 import Root from "./Root";
 import LayoutGroup from "./LayoutGroup";
@@ -55,6 +56,9 @@ const Renderer = Reconciler({
       case "component": {
         if (props.type === "label") {
           return new Label(props);
+        }
+        if (props.type === "button") {
+          return new Button(props);
         }
         if (props.type === "title") {
           return new Title(props);
