@@ -1,16 +1,14 @@
 import uuid from 'uuid';
 import builder from 'xmlbuilder';
 
-import XMLNode from "./XMLNode";
+import BaseElement from "./BaseElement";
 
 type NativeProps = {
   focused: boolean;
   children: string;
 };
 
-class Label extends XMLNode<NativeProps> {
-  id: number;
-
+class Label extends BaseElement<NativeProps> {
   constructor(props: NativeProps) {
     super('component', props);
   }
@@ -30,7 +28,7 @@ class Label extends XMLNode<NativeProps> {
   toJSON() {
     return {
       type: 'label',
-      name: uuid.v4(),
+      name: this.name,
       properties: {
         'Focusable': {
           value: Number(this.props.focused),

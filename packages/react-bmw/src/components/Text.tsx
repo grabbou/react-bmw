@@ -8,7 +8,7 @@ type Props = {
 class Text extends React.Component<Props> {
   render() {
     return (
-      <component id="3" type="label" focusable={this.props.focusable}>
+      <component type="label" focusable={this.props.focusable}>
 
       </component>
     )

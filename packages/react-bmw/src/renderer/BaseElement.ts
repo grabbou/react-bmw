@@ -1,7 +1,12 @@
-export default class XMLNode<T> {
+import * as ComponentRegistry from './ComponentRegistry';
+import uuid from 'uuid';
+
+export default class BaseElement<T> {
+  id: number = ComponentRegistry.register(this);
+  name: string = uuid.v4();
+
   children = [];
   props: T;
-  name;
 
   constructor(name: string, props: T) {
     this.name = name;

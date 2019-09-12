@@ -1,7 +1,7 @@
 import React from 'react';
 import Reconciler from 'react-reconciler';
 
-import XMLNode from './XMLNode';
+import BaseElement from './BaseElement';
 import Label from './Label';
 
 declare global {
@@ -35,19 +35,19 @@ const Renderer = Reconciler({
   createInstance: function(type, props: any & { type: string }) {
     switch (type) {
       case 'container': {
-        return new XMLNode('container', props);
+        return new BaseElement('container', props);
       }
       case 'component': {
         if (props.type === 'label') {
           return new Label(props);
         }
-        return new XMLNode('component', props);
+        return new BaseElement('component', props);
       }
       default:
         throw new Error(`Unsupported component ${type}`);
     }
   },
-  appendInitialChild: function(parent: XMLNode<any>, child: XMLNode<any>) {
+  appendInitialChild: function(parent: BaseElement<any>, child: BaseElement<any>) {
     parent.appendChild(child);
   },
   finalizeInitialChildren: function(...args) {
