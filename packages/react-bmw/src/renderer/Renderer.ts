@@ -1,17 +1,11 @@
 import Reconciler from 'react-reconciler';
-import fs from 'fs';
-import path from 'path';
+import UIGenerator from './UIGenerator';
 
 import BaseElement from './BaseElement';
 import Label from './Label';
 import Title from './Title';
 import State from './State';
 import Root from './Root';
-
-const generatedFilesDir = path.join(process.cwd(), 'uiDescriptionID7');
-
-const xmlFileName = path.join(generatedFilesDir, 'application.xml');
-const jsonFileName = path.join(generatedFilesDir, 'uiDescription.json');
 
 declare global {
   namespace JSX {
@@ -78,23 +72,7 @@ const Renderer = Reconciler({
   appendChild: NOOP,
   prepareForCommit: NOOP,
   resetAfterCommit: function(root: Root) {
-    if (!fs.existsSync(generatedFilesDir)) {
-      fs.mkdirSync(generatedFilesDir);
-    }
-    fs.unlink(xmlFileName, () => {
-      fs.appendFile(xmlFileName, root.toXML(), function(err) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log('The XML file was saved in!', xmlFileName);
-      });
-      fs.appendFile(jsonFileName, JSON.stringify(root.toJSON()), function(err) {
-        if (err) {
-          return console.log(err);
-        }
-        console.log('The JSON file was saved in!', jsonFileName);
-      });
-    });
+    UIGenerator(root);
   },
   supportsMutation: true,
 });
