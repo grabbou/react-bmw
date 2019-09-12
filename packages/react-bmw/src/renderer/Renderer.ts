@@ -68,7 +68,7 @@ const Renderer = Reconciler({
     console.log('prepareForCommit', ...args);
   },
   resetAfterCommit: function(root: Root) {
-    console.log(root.toJSON());
+    console.log(root.toXML());
   },
   supportsMutation: true,
 });

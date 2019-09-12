@@ -1,9 +1,11 @@
 import builder from 'xmlbuilder';
 
 import BaseElement from './BaseElement';
+import IXMLSerialziable from './IXMLSerializable';
+import IJSONSerialziable from './IJSONSerializable';
 
 type NativeProps = {
-  focused: boolean;
+  focusable: boolean;
   children: string;
 };
 
@@ -20,10 +22,10 @@ enum Widget {
 /**
  * Native component that corresponds to a label component
  */
-class Label extends BaseElement<NativeProps> {
-  toXML() {
-    const element = builder
-      .create('component')
+class Label extends BaseElement<NativeProps> implements IXMLSerialziable, IJSONSerialziable {
+  toXML(el: builder.XMLElement) {
+    const element = el
+      .ele('component')
       .att('id', this.id)
       .att('widget', Widget.Multiline_2R1T)
       .att('type', 'label');
@@ -31,7 +33,7 @@ class Label extends BaseElement<NativeProps> {
     element
       .ele('property')
       .att('id', 3)
-      .att('value', 0);
+      .att('value', this.props.focusable ? 1 : 0);
 
     return element;
   }
@@ -42,7 +44,7 @@ class Label extends BaseElement<NativeProps> {
       name: this.name,
       properties: {
         Focusable: {
-          value: this.props.focused ? 1 : 0,
+          value: this.props.focusable ? 1 : 0,
           type: 'UInt',
         },
       },

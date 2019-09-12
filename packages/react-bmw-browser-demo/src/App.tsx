@@ -4,7 +4,7 @@ import { Text, Navigator, Container } from 'react-bmw';
 export default () => {
   const MainScene = () => (
     <Container>
-      <Text>Hello BMW!</Text>
+      <Text focusable>Hello BMW!</Text>
     </Container>
   );
 
