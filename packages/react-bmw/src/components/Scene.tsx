@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 type Props = {
-  children: JSX.Element[] | JSX.Element
+  children: ReactElement<Body>
 }
 
+/**
+ * Main scene component, accepts certain layout groups to exist within
+ */
 class Scene extends React.Component<Props> {
   render() {
     return (
