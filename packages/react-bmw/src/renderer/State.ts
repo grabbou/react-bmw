@@ -3,8 +3,8 @@ import builder from 'xmlbuilder';
 import BaseElement from './BaseElement';
 
 type NativeProps = {
-  focused: boolean;
-  children: string;
+  children: BaseElement<any>;
+  OptionComponents: string;
 };
 
 class Label extends BaseElement<NativeProps> {
@@ -14,36 +14,31 @@ class Label extends BaseElement<NativeProps> {
 
   toXML() {
     const element = builder
-      .create('component')
+      .create('container')
       .att('id', this.id)
-      .att('type', 'label');
+      .att('type', 'state');
 
     element
       .ele('property')
-      .att('id', 3)
-      .att('value', 0);
-
+      .att('id', 16)
+      .att('value', 2);
     return element;
   }
 
   toJSON() {
+    const { children, OptionComponents } = this.props;
     return {
-      type: 'label',
+      type: 'state',
       name: this.name,
       properties: {
-        Focusable: {
-          value: Number(this.props.focused),
-          type: 'UInt',
+        OptionComponents: {
+          value: OptionComponents,
+          type: 'Text',
         },
       },
-      rows: [
-        {
-          Text: {
-            value: this.props.children,
-            type: 'Text',
-          },
-        },
-      ],
+      components: Array.isArray(children)
+        ? children.map(el => el.toJSON())
+        : [children],
     };
   }
 }

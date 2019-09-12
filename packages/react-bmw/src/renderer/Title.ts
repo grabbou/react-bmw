@@ -3,7 +3,6 @@ import builder from 'xmlbuilder';
 import BaseElement from './BaseElement';
 
 type NativeProps = {
-  focused: boolean;
   children: string;
 };
 
@@ -16,26 +15,14 @@ class Label extends BaseElement<NativeProps> {
     const element = builder
       .create('component')
       .att('id', this.id)
-      .att('type', 'label');
-
-    element
-      .ele('property')
-      .att('id', 3)
-      .att('value', 0);
-
+      .att('type', 'title');
     return element;
   }
 
   toJSON() {
     return {
-      type: 'label',
+      type: 'title',
       name: this.name,
-      properties: {
-        Focusable: {
-          value: Number(this.props.focused),
-          type: 'UInt',
-        },
-      },
       rows: [
         {
           Text: {

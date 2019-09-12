@@ -1,7 +1,7 @@
 import * as ComponentRegistry from './ComponentRegistry';
 import uuid from 'uuid';
 
-export default class BaseElement<T> {
+export default abstract class BaseElement<T> {
   id: number = ComponentRegistry.register(this);
   name: string = uuid.v4();
 
@@ -37,8 +37,7 @@ export default class BaseElement<T> {
 
   // This method will be called multiple times for each children
   // To avoid unnecessary redraws, we batch updates with requestAnimationFrame
-  invalidate() {
-  }
+  invalidate() {}
 
   update: any;
 }
