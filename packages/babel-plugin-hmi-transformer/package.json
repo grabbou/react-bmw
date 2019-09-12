@@ -8,12 +8,8 @@
     "npm": "> 3"
   },
   "scripts": {
-    "add-contributor": "kcd-scripts contributors add",
-    "build": "kcd-scripts build",
-    "lint": "kcd-scripts lint",
-    "test": "kcd-scripts test",
-    "test:update": "kcd-scripts test --updateSnapshot",
-    "validate": "kcd-scripts validate"
+    "build": "babel src --out-dir dist --extensions '.js,.ts,.tsx' --ignore '**/__tests__/**' --source-maps",
+    "lint": "eslint ./src"
   },
   "files": [
     "dist"
@@ -29,16 +25,24 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "prettier": "^1.18.2",
+    "@babel/parser": "^7.5.5",
     "require-from-string": "^2.0.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/plugin-transform-typescript": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-typescript": "^7.6.0",
+    "@callstack/eslint-config": "^7.0.0",
     "ast-pretty-print": "^2.0.1",
     "babel-plugin-tester": "^5.0.0",
-    "kcd-scripts": "^0.39.0"
+    "eslint": "^6.3.0",
+    "prettier": "^1.18.2"
   },
   "eslintConfig": {
-    "extends": "./node_modules/kcd-scripts/eslint.js"
+    "extends": "@callstack"
   },
   "eslintIgnore": [
     "node_modules",
@@ -46,7 +50,13 @@
     "dist"
   ],
   "babel": {
-    "presets": "kcd-scripts/babel"
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-object-rest-spread"
+    ]
   },
   "repository": {
     "type": "git",

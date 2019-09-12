@@ -125,7 +125,7 @@ export default function getReplacers(babel) {
         Error,
       )
     }
-    replace({path, code, fileOpts}, babel)
+    replace({path, code, fileOpts, {}}, babel)
   }
 
   function asFunction(path, fileOpts) {

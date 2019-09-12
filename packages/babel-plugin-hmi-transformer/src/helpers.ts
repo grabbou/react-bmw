@@ -1,5 +1,6 @@
 import p from 'path'
 import fs from 'fs'
+
 import requireFromCodeString from 'require-from-string'
 
 export function requireFromString(code, filename) {
