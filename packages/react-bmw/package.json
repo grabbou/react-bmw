@@ -2,9 +2,10 @@
   "name": "react-bmw",
   "version": "1.0.0-alpha.0",
   "description": "A React RHMI renderer",
-  "main": "src/index.ts",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "tsc src/index.ts --outFile index.js --lib 'ES2015' --esModuleInterop --module 'system' --moduleResolution 'node'"
   },
   "author": "",
   "license": "MIT",
@@ -12,5 +13,7 @@
     "@types/react": "^16.9.2",
     "@types/react-reconciler": "^0.18.0",
     "react-reconciler": "^0.21.0"
+  },
+  "devDependencies": {
   }
 }
