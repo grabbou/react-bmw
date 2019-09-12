@@ -1,13 +1,13 @@
-import fs from 'fs';
-import path from 'path';
 import Root from './Root';
 
-const shouldGenerateFiles = process.env.GENERATE_UI;
-const generatedFilesDir = path.join(process.cwd(), 'uiDescriptionID7');
-const xmlFileName = path.join(generatedFilesDir, 'application.xml');
-const jsonFileName = path.join(generatedFilesDir, 'uiDescription.json');
-
 export default (root: Root) => {
+  const fs = require('fs');
+  const path = require('path');
+
+  const shouldGenerateFiles = process.env.GENERATE_UI;
+  const generatedFilesDir = path.join(process.cwd(), 'uiDescriptionID7');
+  const xmlFileName = path.join(generatedFilesDir, 'application.xml');
+  const jsonFileName = path.join(generatedFilesDir, 'uiDescription.json');
   if (shouldGenerateFiles) {
     if (!fs.existsSync(generatedFilesDir)) {
       fs.mkdirSync(generatedFilesDir);
