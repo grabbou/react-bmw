@@ -22,7 +22,8 @@ enum Widget {
 /**
  * Native component that corresponds to a label component
  */
-class Label extends BaseElement<NativeProps> implements IXMLSerialziable, IJSONSerialziable {
+class Label extends BaseElement<NativeProps>
+  implements IXMLSerialziable, IJSONSerialziable {
   toXML(el: builder.XMLElement) {
     const element = el
       .ele('component')

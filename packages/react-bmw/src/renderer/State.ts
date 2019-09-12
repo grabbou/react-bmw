@@ -12,7 +12,8 @@ enum Widget {
   LT_Wide = 'LT_State_Wide',
 }
 
-class State extends BaseElement<NativeProps> implements IXMLSerialziable, IJSONSerialziable {
+class State extends BaseElement<NativeProps>
+  implements IXMLSerialziable, IJSONSerialziable {
   constructor(props: NativeProps) {
     super(props);
   }
@@ -27,7 +28,7 @@ class State extends BaseElement<NativeProps> implements IXMLSerialziable, IJSONS
     for (const child of this.children) {
       child.toXML(element);
     }
-      
+
     return element;
   }
 

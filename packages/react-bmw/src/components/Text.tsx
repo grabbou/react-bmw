@@ -11,7 +11,7 @@ class Text extends React.Component<Props> {
       <component type="label" focusable={this.props.focusable || false}>
         {this.props.children}
       </component>
-    )
+    );
   }
 }
 

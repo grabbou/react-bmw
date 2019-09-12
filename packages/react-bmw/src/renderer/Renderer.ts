@@ -1,11 +1,18 @@
-import Reconciler from 'react-reconciler';
+import Reconciler from "react-reconciler";
+import fs from "fs";
+import path from "path";
 
-import BaseElement from './BaseElement';
-import Label from './Label';
-import Title from './Title';
-import State from './State';
-import Root from './Root';
-import LayoutGroup from './LayoutGroup';
+import BaseElement from "./BaseElement";
+import Label from "./Label";
+import Title from "./Title";
+import State from "./State";
+import Root from "./Root";
+import LayoutGroup from "./LayoutGroup";
+
+const generatedFilesDir = path.join(process.cwd(), "uiDescriptionID7");
+
+const xmlFileName = path.join(generatedFilesDir, "application.xml");
+const jsonFileName = path.join(generatedFilesDir, "uiDescription.json");
 
 declare global {
   namespace JSX {
@@ -16,6 +23,8 @@ declare global {
     }
   }
 }
+
+const NOOP = () => {};
 
 const rootHostContext = {};
 const childHostContext = {};
@@ -29,7 +38,7 @@ const Renderer = Reconciler({
   getChildHostContext: function() {
     return childHostContext;
   },
-  shouldSetTextContent: function(...args) {
+  shouldSetTextContent: function() {
     return false;
   },
   createTextInstance: function(text) {
@@ -37,17 +46,17 @@ const Renderer = Reconciler({
   },
   createInstance: function(type, props: any & { type: string }) {
     switch (type) {
-      case 'container': {
+      case "container": {
         return new State(props);
       }
-      case 'layoutGroup': {
+      case "layoutGroup": {
         return new LayoutGroup(props);
       }
-      case 'component': {
-        if (props.type === 'label') {
+      case "component": {
+        if (props.type === "label") {
           return new Label(props);
         }
-        if (props.type === 'title') {
+        if (props.type === "title") {
           return new Title(props);
         }
         throw new Error(`Unsupported component ${type}`);
@@ -62,21 +71,37 @@ const Renderer = Reconciler({
   ) {
     parent.appendChild(child);
   },
-  finalizeInitialChildren: function(...args) {
+  finalizeInitialChildren: function() {
     return false;
   },
-  appendChildToContainer: (parent: BaseElement<any>, child: BaseElement<any>) => {
+  appendChildToContainer: (
+    parent: BaseElement<any>,
+    child: BaseElement<any>
+  ) => {
     parent.appendChild(child);
   },
-  appendChild: () => {},
-  prepareForCommit: function(...args) {
-    console.log('prepareForCommit', ...args);
-  },
+  appendChild: NOOP,
+  prepareForCommit: NOOP,
   resetAfterCommit: function(root: Root) {
-    console.log(JSON.stringify(root.toJSON()));
-    // console.log(root.toXML());
+    if (!fs.existsSync(generatedFilesDir)) {
+      fs.mkdirSync(generatedFilesDir);
+    }
+    fs.unlink(xmlFileName, () => {
+      fs.appendFile(xmlFileName, root.toXML(), function(err) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("The XML file was saved in!", xmlFileName);
+      });
+      fs.appendFile(jsonFileName, JSON.stringify(root.toJSON()), function(err) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log("The JSON file was saved in!", jsonFileName);
+      });
+    });
   },
-  supportsMutation: true,
+  supportsMutation: true
 });
 
 let root: Reconciler.FiberRoot;
@@ -89,6 +114,5 @@ export default (
   if (!root) {
     root = Renderer.createContainer(new Root(entryPointId), false);
   }
-
   Renderer.updateContainer(reactElement, root, null, callback);
 };
