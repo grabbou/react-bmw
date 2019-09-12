@@ -1,9 +1,9 @@
-export default class XMLNode {
+export default class XMLNode<T> {
   children = [];
-  props = {};
+  props: T;
   name;
-  
-  constructor(name, props) {
+
+  constructor(name: string, props: T) {
     this.name = name;
     this.props = props;
   }

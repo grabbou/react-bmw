@@ -13,6 +13,10 @@
   "dependencies": {
     "@types/react": "^16.9.2",
     "@types/react-reconciler": "^0.18.0",
-    "react-reconciler": "^0.21.0"
+    "@types/uuid": "^3.4.5",
+    "@types/xmlbuilder": "^11.0.1",
+    "react-reconciler": "^0.21.0",
+    "uuid": "^3.3.3",
+    "xmlbuilder": "^13.0.2"
   }
 }

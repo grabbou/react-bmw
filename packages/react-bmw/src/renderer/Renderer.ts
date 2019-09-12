@@ -2,6 +2,7 @@ import React from 'react';
 import Reconciler from 'react-reconciler';
 
 import XMLNode from './XMLNode';
+import Label from './Label';
 
 declare global {
   namespace JSX {
@@ -31,19 +32,22 @@ const Renderer = Reconciler({
   createTextInstance: function(text) {
     return Text;
   },
-  createInstance: function(type, props) {
+  createInstance: function(type, props: any & { type: string }) {
     switch (type) {
       case 'container': {
         return new XMLNode('container', props);
       }
       case 'component': {
+        if (props.type === 'label') {
+          return new Label(props);
+        }
         return new XMLNode('component', props);
       }
       default:
         throw new Error(`Unsupported component ${type}`);
     }
   },
-  appendInitialChild: function(parent: XMLNode, child: XMLNode) {
+  appendInitialChild: function(parent: XMLNode<any>, child: XMLNode<any>) {
     parent.appendChild(child);
   },
   finalizeInitialChildren: function(...args) {
