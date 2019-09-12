@@ -28,8 +28,8 @@ const Renderer = Reconciler({
     console.log('shouldSetTextContent', ...args);
     return false;
   },
-  createTextInstance: function(...args) {
-    console.log('createTextInstance', ...args)
+  createTextInstance: function(text) {
+    return Text;
   },
   createInstance: function(type, props) {
     switch (type) {
@@ -43,8 +43,8 @@ const Renderer = Reconciler({
         throw new Error(`Unsupported component ${type}`);
     }
   },
-  appendInitialChild: function(...args) {
-    console.log('appendInitialChild', ...args)
+  appendInitialChild: function(parent: XMLNode, child: XMLNode) {
+    parent.appendChild(parent);
   },
   finalizeInitialChildren: function(...args) {
     console.log('finalizeInitialChildren', ...args)
