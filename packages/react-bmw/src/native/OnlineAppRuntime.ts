@@ -21,7 +21,10 @@ onlineApp.start();
 
 class OnlineAppRuntime implements IOAPInterface {
   attachListenerToButton: (id: number, cb: () => void) => void;
-  openState: (id: number) => void;
+  openState: (id: number) => void = async id => {
+    await rhmiIsReady;
+    await onlineApp.rhmiApplication.openState(id);
+  };
   showInitialScreen: (stateId: number) => void = async stateId => {
     await rhmiIsReady;
     const entryState = onlineApp.rhmiApplication.getById(stateId);
