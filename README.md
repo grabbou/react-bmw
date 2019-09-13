@@ -2,13 +2,21 @@
   <img src="assets/bmw_logo.jpg">
 </p>
 
-## React-BMW
+> This is a React renderer for BMW OAP apps that helps creating awesome UI with minimal effort.
 
-This is a React renderer for BMW OAP apps that helps creating awesome UI with minimal effort.
+## Getting started
 
-The purpose of this project is to make development of the OAP easy and enjoyable using a consistent developer experience based on JavaScript and React. 
+Install this package from private Github registry:
+
+```bash
+$ npm install @grabbou/react-bmw@1.0.0-alpha.0
+```
+
+Note: [Make sure to have it configured before installing](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry). Otherwise, you will receive a 404 error as this package is not publicly available due to security concerns.
 
 ## Motivation
+
+The purpose of this project is to make development of the OAP easy and enjoyable using a consistent developer experience based on JavaScript and React. 
 
 We found that the implementation of UI is a real challenge for newbies (maybe not only for newbies :) ). There are HMI, XML and JSON files that represent the same UI. We decided to try to make it easier with well known library - React. Thanks to that we are able to building user interfaces declaratively by breaking them into reusable components and generate needed files for OAP.
 
