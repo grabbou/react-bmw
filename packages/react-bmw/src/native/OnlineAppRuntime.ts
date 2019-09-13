@@ -1,4 +1,5 @@
 import IOAPInterface from './IOAPInterface';
+
 // @ts-ignore
 import OnlineApp from 'oap-sdk/src/core/OnlineApp';
 
@@ -8,14 +9,17 @@ const rhmiIsReady = new Promise(resolve => {
     resolve();
   });
 });
+
 onlineApp.on('entryPointExecute', async () => {
   onlineApp.rhmiApplication.openEntryState(
     '89065040-ce62-11e9-b5b0-959cc45744a0'
   );
 });
+
 onlineApp.on('initialized', async () => {
   await onlineApp.initialized();
 });
+
 onlineApp.start();
 
 class OnlineAppRuntime implements IOAPInterface {
