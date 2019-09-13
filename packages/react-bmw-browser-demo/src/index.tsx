@@ -1,6 +1,6 @@
-import React from 'react';
-import * as ReactBMW from 'react-bmw';
+import React from "react";
+import { render } from "@grabbou/react-bmw";
 
-import MainApplication from './App';
+import MainApplication from "./App";
 
-ReactBMW.render(<MainApplication />, '89065040-ce62-11e9-b5b0-959cc45744a0');
+render(<MainApplication />, "89065040-ce62-11e9-b5b0-959cc45744a0");
