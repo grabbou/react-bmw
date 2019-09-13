@@ -1,5 +1,5 @@
 import React from 'react';
-import { runApplication } from 'react-bmw';
+import { runApplication } from '@grabbou/react-bmw';
 
 import MainApplication from './App';
 
