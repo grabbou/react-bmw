@@ -3,12 +3,14 @@
   "version": "1.0.0-alpha.0",
   "description": "A React RHMI renderer",
   "main": "dist/index.js",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@grabbou"
+  },
   "scripts": {
     "build": "tsc --declaration",
     "watch": "tsc -w --declaration"
   },
   "types": "dist/index.d.ts",
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "path": "^0.12.7",
