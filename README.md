@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/bmw_logo.jpg">
+  <img src="assets/bmw_logo.jpg" height=250>
 </p>
 
 > This is a React renderer for BMW OAP apps that helps creating awesome UI with minimal effort.
@@ -13,6 +13,25 @@ $ npm install @grabbou/react-bmw@1.0.0-alpha.0
 ```
 
 Note: [Make sure to have it configured before installing](https://help.github.com/en/articles/configuring-npm-for-use-with-github-package-registry). Otherwise, you will receive a 404 error as this package is not publicly available due to security concerns.
+
+## Usage
+
+Import the package directly from your app and create your first component:
+
+```tsx
+import React from 'react';
+import * as ReactBMW from 'react-bmw';
+
+const MainApp = (
+  <Scene>
+    <Body>
+      <Text>Hello world!</Text>
+    </Body>
+  </Scene>
+);
+
+ReactBMW.render(<MainApp />, '$$yourUUIDgoesHere');
+```
 
 ## Motivation
 
