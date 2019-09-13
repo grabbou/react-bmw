@@ -37,15 +37,15 @@ class OnlineAppRuntime implements IOAPInterface {
     await rhmiIsReady;
 
     const entryState = onlineApp.rhmiApplication.getById(stateId);
-    await onlineApp.rhmiApplication.mapEntryState(entryStateId, entryState);
+    await onlineApp.rhmiApplication.mapEntryState('89065040-ce62-11e9-b5b0-959cc45744a0', entryState);
 
     await entryState.updateResources();
     if (onlineApp.startReason === 'ENTRY_POINT') {
-      await onlineApp.rhmiApplication.openEntryState(entryStateId);
+      await onlineApp.rhmiApplication.openEntryState('89065040-ce62-11e9-b5b0-959cc45744a0');
     }
 
     onlineApp.on('entryPointExecute', async () => {
-      onlineApp.rhmiApplication.openEntryState(entryStateId);
+      onlineApp.rhmiApplication.openEntryState('89065040-ce62-11e9-b5b0-959cc45744a0');
     });
   };
 }
