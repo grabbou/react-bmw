@@ -22,6 +22,7 @@ class OnlineAppRuntime implements IOAPInterface {
     id,
     cb
   ) => {
+    await rhmiIsReady;
     const buttonHandle = onlineApp.rhmiApplication.getById(id);
     buttonHandle.on('action', cb);
   };
