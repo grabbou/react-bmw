@@ -4,16 +4,11 @@ import IOAPInterface, { OAP } from './IOAPInterface';
 import OnlineApp from 'oap-sdk/src/core/OnlineApp';
 
 const onlineApp: OAP = new OnlineApp();
-const rhmiIsReady = new Promise(resolve => {
+
+export const rhmiIsReady = new Promise(resolve => {
   onlineApp.on('rhmiReady', async () => {
     resolve();
   });
-});
-
-onlineApp.on('entryPointExecute', async () => {
-  onlineApp.rhmiApplication.openEntryState(
-    '89065040-ce62-11e9-b5b0-959cc45744a0'
-  );
 });
 
 onlineApp.on('initialized', async () => {
@@ -47,6 +42,10 @@ class OnlineAppRuntime implements IOAPInterface {
     if (onlineApp.startReason === 'ENTRY_POINT') {
       await onlineApp.rhmiApplication.openEntryState(entryStateId);
     }
+
+    onlineApp.on('entryPointExecute', async () => {
+      onlineApp.rhmiApplication.openEntryState(entryStateId);
+    });
   };
 }
 
