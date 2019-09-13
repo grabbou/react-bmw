@@ -1,6 +1,6 @@
-import React from "react";
-import { render } from "@grabbou/react-bmw";
+import React from 'react';
+import { runApplication } from 'react-bmw';
 
-import MainApplication from "./App";
+import MainApplication from './App';
 
-render(<MainApplication />, "89065040-ce62-11e9-b5b0-959cc45744a0");
+runApplication(<MainApplication />, '89065040-ce62-11e9-b5b0-959cc45744a0');

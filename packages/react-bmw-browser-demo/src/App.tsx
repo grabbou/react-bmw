@@ -1,12 +1,12 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef } from 'react';
 import {
   Text,
   Navigator,
   NavigatorRoute,
   Button,
   Scene,
-  Body
-} from "@grabbou/react-bmw";
+  Body,
+} from 'react-bmw';
 
 export default () => {
   const MainScene = forwardRef<Scene, NavigatorRoute>(({ navigate }, ref) => (

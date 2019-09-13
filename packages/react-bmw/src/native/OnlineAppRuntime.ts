@@ -1,7 +1,7 @@
 import IOAPInterface, { OAP } from './IOAPInterface';
 
 // @ts-ignore
-import OnlineApp from 'oap-sdk/src/core/OnlineApp';
+import OnlineApp from "oap-sdk/src/core/OnlineApp"; // eslint-disable-line
 
 const onlineApp: OAP = new OnlineApp();
 
