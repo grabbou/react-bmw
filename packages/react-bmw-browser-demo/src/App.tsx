@@ -6,7 +6,7 @@ import {
   Button,
   Scene,
   Body,
-} from 'react-bmw';
+} from '@grabbou/react-bmw';
 
 export default () => {
   const MainScene = forwardRef<Scene, NavigatorRoute>(({ navigate }, ref) => (
