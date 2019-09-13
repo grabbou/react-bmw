@@ -1,41 +1,51 @@
-// @todo
-// to be implemented
-class OnlineAppRuntime {}
+import IOAPInterface from './IOAPInterface';
 
-throw new Error("Not implemented");
+// @ts-ignore
+import OnlineApp from 'oap-sdk/src/core/OnlineApp';
 
-// async start(entryPointId: string, stateId: number) {
-//   this.oap.on("entryPointExecute", async () => {
-//     this.oap.rhmiApplication.openEntryState(entryPointId);
-//   });
+const onlineApp = new OnlineApp();
+const rhmiIsReady = new Promise(resolve => {
+  onlineApp.on('rhmiReady', async () => {
+    resolve();
+  });
+});
 
-//   this.oap.on("rhmiReady", async () => {
-//     const entryState = this.oap.rhmiApplication.getById(stateId);
-//     await entryState.updateResources();
+onlineApp.on('entryPointExecute', async () => {
+  onlineApp.rhmiApplication.openEntryState(
+    '89065040-ce62-11e9-b5b0-959cc45744a0'
+  );
+});
 
-//     await this.oap.rhmiApplication.mapEntryState(entryPointId, entryState);
+onlineApp.on('initialized', async () => {
+  await onlineApp.initialized();
+});
 
-//     if (this.oap.startReason === "ENTRY_POINT") {
-//       await this.oap.rhmiApplication.openEntryState(entryPointId);
-//     }
-//   });
+onlineApp.start();
 
-//   // @todo initialised event
+class OnlineAppRuntime implements IOAPInterface {
+  attachListenerToButton: (id: number, cb: () => void) => void = async (id, cb) => {
+    const buttonHandle = onlineApp.rhmiApplication.getById(id);
+    buttonHandle.on('action', cb);
+  };
+  openState: (id: number) => void = async id => {
+    await rhmiIsReady;
+    await onlineApp.rhmiApplication.openState(id);
+  };
+  showInitialScreen: (stateId: number) => void = async stateId => {
+    await rhmiIsReady;
+    const entryState = onlineApp.rhmiApplication.getById(stateId);
+    await onlineApp.rhmiApplication.mapEntryState(
+      '89065040-ce62-11e9-b5b0-959cc45744a0',
+      entryState
+    );
 
-//   await this.oap.start();
-// }
-
-// async runApplication(
-//   ComponentFactory: new (ui: UIManager) => HMIState,
-//   entryPointId: string
-// ) {
-//   const ui = new UIManager(oap);
-
-//   const appInstance = new AppPresenter(ui);
-
-//   await appInstance.init();
-
-//   ui.start(entryPointId, 10);
-// }
+    await entryState.updateResources();
+    if (onlineApp.startReason === 'ENTRY_POINT') {
+      await onlineApp.rhmiApplication.openEntryState(
+        '89065040-ce62-11e9-b5b0-959cc45744a0'
+      );
+    }
+  };
+}
 
 export default OnlineAppRuntime;
