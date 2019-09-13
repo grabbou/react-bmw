@@ -1,4 +1,4 @@
-import IOAPInterface from "./IOAPInterface";
+import IOAPInterface from './IOAPInterface';
 
 /**
  * Like OAP, but without the SDK. This is to provide a realiable proxy
@@ -9,10 +9,10 @@ class OfflineAppRuntime implements IOAPInterface {
   openState = (id: number) => {
     console.log(`Ready to show scene: ${id}`);
   };
-  showInitialScreen(stateId: number) {
-    console.log(`Showing initial screen: ${stateId}`);
+  showInitialScreen(entryPointId: string, stateId: number) {
+    console.log(`Showing initial screen: ${stateId} for ${entryPointId}`);
   }
-  attachListenerToButton(id: number, cb: () => void) {
+  attachListenerToButton(id: number) {
     console.log(`Attaching listener to a button with id: ${id}`);
   }
 }

@@ -1,5 +1,6 @@
 export declare class RHMIState {
   updateResources: () => Promise<void>;
+  on: (event: string, cb: () => void) => void;
 }
 
 export type RHMI = {
@@ -19,12 +20,13 @@ export type OAP = {
   rhmiApplication: RHMI;
   startReason: string;
   start: () => Promise<void>;
+  initialized: () => Promise<void>;
   on: (name: string, handler: (uuid: string) => Promise<void>) => void;
 };
 
 interface IOAPInterface {
   openState: (id: number) => void;
-  showInitialScreen: (stateId: number) => void;
+  showInitialScreen: (entryPointId: string, stateId: number) => void;
   attachListenerToButton: (id: number, cb: () => void) => void;
 }
 

@@ -1,11 +1,12 @@
-import IOAPInterface from "./IOAPInterface";
+import IOAPInterface from './IOAPInterface';
+import renderApplication from '../renderer/Renderer';
 
 let OnlineAppRuntime: new () => IOAPInterface;
 
 try {
-  OnlineAppRuntime = require("./OnlineAppRuntime").default;
+  OnlineAppRuntime = require('./OnlineAppRuntime').default;
 } catch (e) {
-  OnlineAppRuntime = require("./OfflineAppRuntime").default;
+  OnlineAppRuntime = require('./OfflineAppRuntime').default;
 }
 
 /**
@@ -13,7 +14,7 @@ try {
  */
 class UIManager {
   oap: IOAPInterface;
-  appId: number;
+  entryPointId: string;
 
   constructor(oap: IOAPInterface) {
     this.oap = oap;
@@ -24,11 +25,16 @@ class UIManager {
   }
 
   showInitialScreen(stateId: number) {
-    this.oap.showInitialScreen(stateId);
+    this.oap.showInitialScreen(this.entryPointId, stateId);
   }
 
   attachListenerToButton(id: number, cb: () => void) {
     this.oap.attachListenerToButton(id, cb);
+  }
+
+  runApplication(Component: JSX.Element, entryPointId: string) {
+    this.entryPointId = entryPointId;
+    renderApplication(Component, entryPointId);
   }
 }
 
