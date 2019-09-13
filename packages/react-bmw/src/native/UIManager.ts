@@ -1,5 +1,12 @@
 import IOAPInterface from "./IOAPInterface";
-import OfflineAppRuntime from "./OfflineAppRuntime";
+
+let OnlineAppRuntime: IOAPInterface;
+
+try {
+  OnlineAppRuntime = require("./OnlineAppRuntime").default;
+} catch (e) {
+  OnlineAppRuntime = require("./OfflineAppRuntime").default;
+}
 
 /**
  * UIManager
@@ -25,4 +32,4 @@ class UIManager {
   }
 }
 
-export default new UIManager(new OfflineAppRuntime());
+export default new UIManager(new OnlineAppRuntime());

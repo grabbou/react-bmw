@@ -2,6 +2,8 @@
 // to be implemented
 class OnlineAppRuntime {}
 
+throw new Error("Not implemented");
+
 // async start(entryPointId: string, stateId: number) {
 //   this.oap.on("entryPointExecute", async () => {
 //     this.oap.rhmiApplication.openEntryState(entryPointId);
