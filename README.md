@@ -2,28 +2,36 @@
   <img src="assets/bmw_logo.jpg">
 </p>
 
-## react-BMW
+## React-BMW
 
-This is the react renderer for BMW OAP apps that helps creating awesome UI with minimal effort.
+This is a React renderer for BMW OAP apps that helps creating awesome UI with minimal effort.
 
 The purpose of this project is to make development of the OAP easy and enjoyable using a consistent developer experience based on JavaScript and React. 
 
 ## Motivation
 
-We found that the implementation of UI is a real challenge for newbies (maybe not only for newbies :) ). There are HMI, XML and JSON files that represent the same UI. We decided to try to make it easier with well known library - React. Thanks to that we are able to building user interfaces differently by breaking them into reusable components and generate needed files for OAP.
+We found that the implementation of UI is a real challenge for newbies (maybe not only for newbies :) ). There are HMI, XML and JSON files that represent the same UI. We decided to try to make it easier with well known library - React. Thanks to that we are able to building user interfaces declaratively by breaking them into reusable components and generate needed files for OAP.
 
 What are the advantages:
 - The declarative nature of components promotes predictability
-- By unifying your markup with its corresponding view logic, React can actually make views easier to extend and maintain.
-- Enables reusability of ready UI components
-- Reduces time spent on creating layouts by developers.
-- Opens possibility to write apps in well known and documented library.
-- Automatic component resolution which means - no more checking which element has which id.
+- By unifying your markup with its corresponding view logic, React can actually make views easier to extend and maintain
+- Promotes reusability of the already created UI components
+- Reduces time spent on creating layouts
+- Opens possibility to write apps in well known and documented library
+- Faster development loop with in-browser emulator and layout debugger
+- Cross-platform by default, allows to run same code on the browser, mobile and different iDrive systems 
+- Significant performance improvements with batched updates
+- Automatic component resolution - no more getting elements by their IDs and keeping them in sync
 
 ## How does it work?
-Instead of creating the `HMI` files and then fill them with data in  imperative way just create react components in declarative way. react-BMW take cares also about adding listeners to buttons and moving to other state (scene).
+
+React builds in-memory representation of the application tree which is then projected onto `xml` and `json` files that are needed for BMW. This happens during the build step and is known as "server-side rendering" on the web.
+
+During runtime, React executes the application logic and registers handlers, listening for changes and making sure the updates are delivered in the most performant way possible.
 
 ### React code
+
+Please find a sample Scene component below. Please note that the naming is different from BMW internal nomenclature, that is, we have `Scene`, `Body`, `Text` and `Button` instead of `LayoutGroup`, `Container` and `Component`. This is a concept heavily borrowed from [the semantic web](https://en.wikipedia.org/wiki/Semantic_Web).
 
 ```tsx
 <Scene>
@@ -38,7 +46,11 @@ Instead of creating the `HMI` files and then fill them with data in  imperative 
 ```
 
 ### Generated code
+
+During the build step, the following XML and JSON files are generated.
+
 #### XML
+
 ```xml
 <?xml version="1.0"?>
 <application>
@@ -63,6 +75,7 @@ Instead of creating the `HMI` files and then fill them with data in  imperative 
 ```
 
 #### JSON
+
 ```json
 {
   "schemaVersion": "1.3.0",
