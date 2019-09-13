@@ -14,7 +14,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "buildUI": "babel ./src --out-dir build --extensions '.js,.ts,.tsx' --ignore '**/__tests__/**' && GENERATE_UI=true node build/index.js"
+    "buildUI": "cp ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.js ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.temp.js && cp ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.web.js ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.js && babel ./src --out-dir build --extensions '.js,.ts,.tsx' --ignore '**/__tests__/**' && GENERATE_UI=true node build/UI.js && cp ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.js ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.web.js && cp ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.temp.js ./node_modules/@grabbou/react-bmw/dist/native/OnlineAppRuntime.js"
   },
   "browserslist": {
     "production": [
