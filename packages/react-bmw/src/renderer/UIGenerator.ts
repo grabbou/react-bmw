@@ -5,7 +5,12 @@ export default (root: Root) => {
   const path = require('path');
 
   const shouldGenerateFiles = process.env.GENERATE_UI;
-  const generatedFilesDir = path.join(process.cwd(), 'uiDescriptionID7');
+  const generatedFilesDir = path.join(
+    process.cwd(),
+    'rhmiData',
+    'uiDescriptions',
+    'ID7'
+  );
   const xmlFileName = path.join(generatedFilesDir, 'application.xml');
   const jsonFileName = path.join(generatedFilesDir, 'uiDescription.json');
   if (shouldGenerateFiles) {
