@@ -1,6 +1,6 @@
 import IOAPInterface from "./IOAPInterface";
 
-let OnlineAppRuntime: IOAPInterface;
+let OnlineAppRuntime: new () => IOAPInterface;
 
 try {
   OnlineAppRuntime = require("./OnlineAppRuntime").default;
