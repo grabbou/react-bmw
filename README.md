@@ -207,3 +207,5 @@ During the build step, the following XML and JSON files are generated.
   }
 }
 ```
+
+## Made with ❤️ at Callstack
