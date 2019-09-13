@@ -33,31 +33,15 @@ type OAP = {
 class UIManager {
   oap: OAP;
   appId: number;
+  contextLogger: any;
 
-  constructor(oap: OAP) {
+  constructor(oap: OAP, logFactory) {
     this.oap = oap;
+    this.contextLogger = logFactory('UIMG');
   }
 
-  async start(entryPointId: string, stateId: number) {
-    this.oap.on('entryPointExecute', async () => {
-      this.oap.rhmiApplication.openEntryState(entryPointId);
-    });
-
-    this.oap.on('rhmiReady', async () => {
-      const entryState = this.oap.rhmiApplication.getById(stateId);
-      await entryState.updateResources();
-
-      await this.oap.rhmiApplication.mapEntryState(entryPointId, entryState);
-
-      if (this.oap.startReason === 'ENTRY_POINT') {
-        await this.oap.rhmiApplication.openEntryState(entryPointId);
-      }
-    });
-
-    this.oap.on('initialized', async () => {
-      await this.oap.initialized();
-    });
-    await this.oap.start();
+  async start(entryPointId: string, stateId: number, appInstance: HMIState) {
+    this.contextLogger.info(`[start]`);
   }
 
   navigateTo(stateId: number) {
@@ -65,27 +49,33 @@ class UIManager {
   }
 
   static async runApplication(
-    oapApp: any,
-    AppPresenter: new (
-      logFactory: any,
-      ui: UIManager,
-      dataModels: any,
-      build: any
-    ) => HMIState,
+    oapApp: OAP,
+    AppPresenter: new (logFactory: any, oap: OAP) => HMIState,
     entryPointId: string,
-    logFactory: any,
-    dataModels: any,
-    build: any
+    logFactory: any
   ) {
+    const contextLogger = logFactory('OA39');
+    oapApp.on('entryPointExecute', async () => {
+      oapApp.rhmiApplication.openEntryState(entryPointId);
+    });
+    const appInstance = new AppPresenter(logFactory, oapApp);
+    oapApp.on('rhmiReady', async () => {
+      contextLogger.info(`[rhmiReady] startReason ${oapApp.startReason}`);
+      const entryState = oapApp.rhmiApplication.getById(1);
+      await oapApp.rhmiApplication.mapEntryState(entryPointId, entryState);
 
+      await entryState.updateResources();
+      if (oapApp.startReason === 'ENTRY_POINT') {
+        await oapApp.rhmiApplication.openEntryState(entryPointId);
+      }
 
-    const ui = new UIManager(oapApp);
-
-    const appInstance = new AppPresenter(logFactory, oapApp, dataModels, build);
-
-    await appInstance.init();
-
-    ui.start(entryPointId, 1);
+      await appInstance.init();
+    });
+    oapApp.on('initialized', async () => {
+      contextLogger.info(`[initialized]`);
+      await oapApp.initialized();
+    });
+    await oapApp.start();
   }
 }
 
