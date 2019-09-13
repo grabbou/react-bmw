@@ -19,6 +19,8 @@ export default (root: Root) => {
         }
         console.log('The XML file was saved in!', xmlFileName);
       });
+    });
+    fs.unlink(xmlFileName, () => {
       fs.appendFile(jsonFileName, JSON.stringify(root.toJSON()), function(err) {
         if (err) {
           return console.log(err);
