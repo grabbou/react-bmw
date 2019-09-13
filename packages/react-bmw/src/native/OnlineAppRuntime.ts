@@ -1,6 +1,7 @@
 // @todo
 // to be implemented
 import IOAPInterface from './IOAPInterface';
+// @ts-ignore
 import OnlineApp from 'oap-sdk/src/core/OnlineApp';
 
 const onlineApp = new OnlineApp();
